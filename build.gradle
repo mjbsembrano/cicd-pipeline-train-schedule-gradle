@@ -1,0 +1,38 @@
+plugins {
+  //id("com.github.node-gradle.node") version "2.2.4"
+  id("com.github.node-gradle.node") version "7.0.1"
+}
+
+node {
+  version    = '9.11.2'
+  download   = true
+}
+
+task build
+
+task zip(type: Zip) {
+  from ('.') {
+    include "*"                 // all files in the top-level directory
+    include "bin/**"
+    include "data/**"
+    include "node_modules/**"
+    include "public/**"
+    include "routes/**"
+    include "views/**"
+  }
+  //destinationDir(file("dist"))
+  //baseName "trainSchedule"
+  destinationDirectory = file("dist")
+  archiveFileName = "trainSchedule.zip"
+}
+
+// Set up dependencies (to be executed after the main execution)
+// Execute by order: npm_Build -> zip -> Build
+build.dependsOn zip
+zip.dependsOn npm_build
+
+// Execute by order: Install -> Test -> npm_Build -> Build
+build.dependsOn npm_build
+npm_build.dependsOn npmInstall      // npmInstall downloads shared libraries needed
+npm_build.dependsOn npm_test
+npm_test.dependsOn npmInstall
