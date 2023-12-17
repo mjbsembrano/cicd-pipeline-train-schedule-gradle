@@ -5,9 +5,9 @@ plugins {
 
 node {
   //version    = '9.11.2'
-  version = '19.9.0'
+  version = '21.4.0'
   download   = true
-  npmVersion = '9.6.3'
+  npmVersion = '10.2.4'
 }
 
 /*java {
