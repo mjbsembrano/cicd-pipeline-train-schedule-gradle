@@ -9,11 +9,11 @@ node {
   npmVersion = "5.6.0"
 }
 
-java {
+/*java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(16)
     }
-}
+}*/
 
 task build
 
