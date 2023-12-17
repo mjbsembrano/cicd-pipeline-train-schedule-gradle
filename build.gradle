@@ -5,7 +5,7 @@ plugins {
 
 node {
   //version    = '9.11.2'
-  version = '19.9.0'
+  version = '17.9.1'
   download   = true
   //npmVersion = "8.19.4"
 }
