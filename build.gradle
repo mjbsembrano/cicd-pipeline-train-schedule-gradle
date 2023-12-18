@@ -4,17 +4,11 @@ plugins {
 }
 
 node {
-  //version    = '9.11.2'
-  version = '21.4.0'
+  version    = '9.11.2'
+  //version = '16.20.2'
   download   = true
-  npmVersion = '10.2.4'
+  //npmVersion = '10.2.4'
 }
-
-/*java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(16)
-    }
-}*/
 
 task build
 
