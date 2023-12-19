@@ -16,7 +16,7 @@ pipeline {
                 script {
                     app = docker.build("mjbsembrano/train-schedule")
                     app.inside {
-                        sh 'echo $(curl localhost:8080)'
+                        sh 'echo $(curl localhost:3000)'
                     }
                 }
             }
@@ -34,7 +34,7 @@ pipeline {
                 }
             }
         }
-        stage('DeployToProduction') {
+        /*stage('DeployToProduction') {
             when {
                 branch 'master'
             }
@@ -54,7 +54,7 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
     }
 }
 /*pipeline {
