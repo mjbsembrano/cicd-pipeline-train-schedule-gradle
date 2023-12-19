@@ -14,9 +14,9 @@ pipeline {
             }
             steps {
                 script {
-                    def app = docker.build("mjbsembrano/train-schedule")
+                    app = docker.build("mjbsembrano/train-schedule")
                     app.inside {
-                        sh 'echo $(curl localhost:3000)'
+                        sh 'echo $(curl localhost:8080)'
                     }
                 }
             }
@@ -27,7 +27,6 @@ pipeline {
             }
             steps {
                 script {
-                    def app = docker.build("mjbsembrano/train-schedule")
                     docker.withRegistry('https://hub.docker.com/', 'docker_hub_login') {
                         app.push("${env.BUILD_NUMBER}")
                         app.push("latest")
@@ -35,7 +34,7 @@ pipeline {
                 }
             }
         }
-        /*stage('DeployToProduction') {
+        stage('DeployToProduction') {
             when {
                 branch 'master'
             }
@@ -55,7 +54,7 @@ pipeline {
                     }
                 }
             }
-        }*/
+        }
     }
 }
 /*pipeline {
