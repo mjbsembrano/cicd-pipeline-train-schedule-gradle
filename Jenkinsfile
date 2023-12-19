@@ -14,7 +14,7 @@ pipeline {
             }
             steps {
                 script {
-                    app = docker.build("mjbsembrano/train-schedule")
+                    def app = docker.build("mjbsembrano/train-schedule")
                     app.inside {
                         sh 'echo $(curl localhost:3000)'
                     }
@@ -27,6 +27,7 @@ pipeline {
             }
             steps {
                 script {
+                    def app = docker.build("mjbsembrano/train-schedule")
                     docker.withRegistry('https://hub.docker.com/', 'docker_hub_login') {
                         app.push("${env.BUILD_NUMBER}")
                         app.push("latest")
