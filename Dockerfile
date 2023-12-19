@@ -1,5 +1,5 @@
 FROM node:carbon
-WORKDIR ~/TrainSchedApp
+WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
 COPY . .
